@@ -1,0 +1,7 @@
+INPUT:
+  DIR: "data"
+  DOMAINS: ("rgb", "normal", "depth")
+  ANNOTATION_FILE: "annotations_input.json"
+
+TRANSFORM:
+  NUMBER: 10

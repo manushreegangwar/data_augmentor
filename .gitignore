@@ -1,0 +1,12 @@
+__pycache__
+_ext
+*.pyc
+
+#MAC
+.DS_Store
+
+#directories
+data/
+augmentations_output/
+build/
+dist/
