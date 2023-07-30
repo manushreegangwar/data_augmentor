@@ -11,10 +11,6 @@ Given a series of images in multiple domains, such as `RGB`, `depth` and `normal
 
 `python setup.py develop`
 
-`pip install yacs opencv-python`
-
-`conda install matplotlib`
-
 ## Running Augmentor
 
 Before running the script, download the sample data from this [link](https://geoffoxholm.github.io/augmenter/) and save under `data` or a path of your choice.
