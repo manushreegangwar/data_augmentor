@@ -11,11 +11,13 @@ from utils.image_utils import load_image
 
 class Augment(object):
     def __init__(self, n_transforms: int):
-        """Inializes Augment class.
+        """Initializes Augment class.
 
         Args:
             n_transforms: Number of image transforms.
         """
+        if n_transforms <= 0:
+            raise ValueError("Number of transforms should be greater than 0.")
         self._transforms = create_transform_list(n_transforms=n_transforms)
 
     @classmethod

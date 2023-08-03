@@ -22,18 +22,14 @@ class Filter(Enum):
 
 
 class FilterImage(object):
-    def __init__(self, filter_type: Filter | None = None):
+    def __init__(self, filter_type: Filter):
         """Initializes filtering transform.
 
         Args:
             filter_type: Type of filter to apply.
 
         """
-        self._filter = (
-            filter_type
-            if filter_type is not None
-            else Filter(random.randint(0, len(Filter) - 1))
-        )
+        self._filter = filter_type
 
     def __call__(self, img: Image):
         """Applies filter to image.
@@ -46,28 +42,20 @@ class FilterImage(object):
         """
         logging.debug("Filtering image using {}".format(self._filter.name))
 
-        img_mode = img.mode
         if img.mode != "RGB":
             img = img.convert("L")
-        img = img.filter(get_filter(self._filter))
+        img = img.filter(get_image_filter(self._filter))
         return img
 
 
 class RotateImage(object):
-    def __init__(
-        self, angle: float | None = None, min_angle: float = 0, max_angle: float = 90
-    ):
+    def __init__(self, angle: float):
         """Initializes rotation transform.
 
         Args:
             angle: Angle of rotation for image.
-                If None, an angle is chosen randomly.
-            min_angle: Lower limit for angle rotation.
-            max_angle: Upper limit for angle rotation.
         """
-        self._angle = (
-            angle if angle is not None else random.uniform(min_angle, max_angle)
-        )
+        self._angle = angle
 
     def __call__(self, img: Image):
         """Applies rotation to image.
@@ -84,7 +72,7 @@ class RotateImage(object):
         return img
 
 
-def get_filter(filter_type: Filter):
+def get_image_filter(filter_type: Filter):
     """Returns PIL.ImageFilter for filter type.
 
     Args:
@@ -112,9 +100,9 @@ def generate_transforms(transform_types: List[Transform] = None):
         transform_types = list(Transform)
     for t in cycle(transform_types):
         if t == Transform.FILTER:
-            yield FilterImage()
+            yield FilterImage(filter_type=Filter(random.randint(0, len(Filter) - 1)))
         elif t == Transform.ROTATE:
-            yield RotateImage()
+            yield RotateImage(angle=random.uniform(0, 90))
         else:
             raise ValueError("{} is an undefined transform type".format(t))
 
