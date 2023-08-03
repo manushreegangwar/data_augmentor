@@ -1,8 +1,8 @@
-import pytest
 import os
+import pytest
 from data_augmentation.augment import Augment
-from utils.annotation_utils import create_input_annotation_json
 from data_augmentation.loader import load_dataset_from_json
+from utils.annotation_utils import create_input_annotation_json
 
 
 @pytest.fixture

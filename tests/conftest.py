@@ -1,21 +1,8 @@
-import pytest
-from PIL import Image, ImageDraw
 import os
-import tempfile
+import pytest
 import shutil
-
-
-@pytest.fixture
-def output_annotation():
-    anno = {
-        "annotations": [
-            {"img_id": "00", "img_path": "test/rgb-00/00.png", "domain": "rgb"},
-            {"img_id": "01", "img_path": "test/rgb-01/01.png", "domain": "rgb"},
-            {"img_id": "00", "img_path": "test/depth-00/00.png", "domain": "depth"},
-            {"img_id": "01", "img_path": "test/depth-01/01.png", "domain": "depth"},
-        ]
-    }
-    return anno
+import tempfile
+from PIL import Image, ImageDraw
 
 
 @pytest.fixture

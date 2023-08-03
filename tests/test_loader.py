@@ -1,11 +1,10 @@
-import pytest
-import tempfile
-import shutil
-import os
-from utils.annotation_utils import create_input_annotation_json
-from data_augmentation.loader import load_dataset_from_json
 import json
-from PIL import Image, ImageDraw
+import os
+import pytest
+import shutil
+import tempfile
+from data_augmentation.loader import load_dataset_from_json
+from utils.annotation_utils import create_input_annotation_json
 
 
 def test_input_annotation_json(input_data_dir, input_domains):
