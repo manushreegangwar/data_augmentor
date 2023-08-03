@@ -5,7 +5,7 @@ Given a series of images in multiple domains, such as `RGB`, `depth` and `normal
 
 ## Setup
 
-`conda create -n AUG python=3.11 numpy --yes`
+`conda create -n AUG python=3.11`
 
 `conda activate AUG`
 
